@@ -1,6 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Prediction 
+Parameters:
+  LayerARN: 
+    Type: String
 Resources:
   SMSantispam:
     Type: AWS::Serverless::Function
@@ -13,7 +16,7 @@ Resources:
       Timeout: 10
       CodeUri: ./
       Layers:
-        - !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:MXNet-lambda-layer'
+        - !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:MXNet-lambda-layer:$LATEST'
       Events:
         GetInference:
           Type: Api
