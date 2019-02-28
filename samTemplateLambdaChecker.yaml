@@ -12,6 +12,8 @@ Resources:
       Tracing: Active
       Timeout: 10
       CodeUri: ./
+      Layers:
+	- !Sub arn:aws:lambda:${AWS:Region}:${AWS:AccountId}:layer:MXNet-lambda-layer
       Events:
         GetInference:
           Type: Api
